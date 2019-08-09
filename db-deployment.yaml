@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: centos/postgresql-10-centos7
+        envFrom:
+        - secretRef:
+            name: secrets
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: db
+      volumes:
+      - name: db
+        persistentVolumeClaim:
+          claimName: db

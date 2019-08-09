@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  rules:
+  - http:
+  # Use a `kustomize` JSON patch overlay to define a host. E.g.:
+  # host: netdash-dev.containers.myuni.edu
+      paths:
+      - path: /
+        backend:
+         serviceName: web
+         servicePort: 80

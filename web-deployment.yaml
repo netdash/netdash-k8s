@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        # Use an overlay to specify an image, e.g.:
+        # image: docker-registry.default.svc:5000/netdash-dev/netdash-umich
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: secrets

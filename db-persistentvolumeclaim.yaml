@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  creationTImestamp: null
+  creationTimestamp: null
   labels:
     io.kompose.service: db
   name: db

@@ -13,6 +13,9 @@ namePrefix: netdash-
 secretGenerator:
 - name: secrets
   files:
+  - secret/DATABASES
+  - secret/NETDASH_FEEDBACK_EMAIL
+  - secret/NETDASH_LOGGING
   - secret/DJANGO_SETTINGS_MODULE
   - secret/NETDASH_ALLOWED_HOSTS
   - secret/POSTGRESQL_ADMIN_PASSWORD
